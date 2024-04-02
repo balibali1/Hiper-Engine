@@ -1,0 +1,6 @@
+[submodule "Hiper/vendor/spdlog"]
+	path = Hiper/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Hiper/vendor/GLFW"]
+	path = Hiper/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

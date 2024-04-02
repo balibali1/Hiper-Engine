@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Hiper">
+      <UniqueIdentifier>{1D62510D-8976-79BE-52F8-1C1EBECB75EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hiper\Events">
+      <UniqueIdentifier>{61EB998A-4D4E-292F-F6D3-61E5E215F5B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Hiper.h" />
+    <ClInclude Include="src\Hiper\Application.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Core.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\EntryPoint.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Events\ApplicationEvent.h">
+      <Filter>Hiper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Events\Event.h">
+      <Filter>Hiper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Events\KeyEvent.h">
+      <Filter>Hiper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Events\MouseEvent.h">
+      <Filter>Hiper\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Layer.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\LayerStack.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Log.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hiper\Window.h">
+      <Filter>Hiper</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hppch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Hiper\Application.cpp">
+      <Filter>Hiper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hiper\Layer.cpp">
+      <Filter>Hiper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hiper\LayerStack.cpp">
+      <Filter>Hiper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hiper\Log.cpp">
+      <Filter>Hiper</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hppch.cpp" />
+  </ItemGroup>
+</Project>
