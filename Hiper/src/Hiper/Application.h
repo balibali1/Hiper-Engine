@@ -22,6 +22,9 @@ namespace Hiper
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
 
+		inline static Application& GetInstance() { return *s_Instance; }
+		inline Window& GetWindow() { return *m_Window; }
+
 	private:
 
 		bool OnWindowClose(WindowCloseEvent& event);
@@ -30,6 +33,9 @@ namespace Hiper
 		bool m_Running = true;
 
 		LayerStack m_LayerStack;
+
+	private:
+		static Application* s_Instance;
 	};
 
 	// To be Defined in Cline

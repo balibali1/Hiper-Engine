@@ -10,12 +10,17 @@
 namespace Hiper
 {
 
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+//#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		HP_CORE_ASSERT(!s_Instance, "Application already exist!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Creat());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window->SetEventCallback(HP_BIND_EVENT_FN(Application::OnEvent));
 
 		unsigned int id;
 		glGenVertexArrays(1, &id);
@@ -31,12 +36,13 @@ namespace Hiper
 		{
 			glClearColor(0.8f, 0.0f, 0.8f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-			m_Window->OnUpdate();
 
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnUpdate();
 			}
+
+			m_Window->OnUpdate();
 		}
 	}
 
@@ -44,7 +50,7 @@ namespace Hiper
 	{
 		EventDispatcher dispatcher(e);
 
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(HP_BIND_EVENT_FN(Application::OnWindowClose));
 
 		HP_CORE_INFO("{0}", e);
 
@@ -61,11 +67,14 @@ namespace Hiper
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverLay(overlay);
+		overlay->OnAttach();
+
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& event)
