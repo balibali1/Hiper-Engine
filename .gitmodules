@@ -1,6 +1,3 @@
-[submodule "Hiper/vendor/spdlog"]
-	path = Hiper/vendor/spdlog
-	url = https://github.com/gabime/spdlog
-[submodule "Hiper/vendor/GLFW"]
-	path = Hiper/vendor/GLFW
-	url = https://github.com/TheCherno/glfw
+[submodule "Hiper/vendor/imgui"]
+	path = Hiper/vendor/imgui
+	url = git@github.com:balibali1/imgui.git
