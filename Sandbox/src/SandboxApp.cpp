@@ -11,12 +11,23 @@ public:
 
 	void OnUpdate() override
 	{
-		HP_INFO("ExampleLayer::OnUpdate");
+		if (Hiper::Input::IsKeyPress(HP_KEY_TAB))
+		{
+			HP_TRACE("Tab key is pressed!(poll)");
+		}
 	}
 
 	void OnEvent(Hiper::Event& event) override
 	{
-		HP_TRACE("{0}", event);
+		if (event.GetEventType() == Hiper::EventType::KeyPressed)
+		{
+			Hiper::KeyPressedEvent& e = (Hiper::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == HP_KEY_TAB)
+			{
+				HP_TRACE("Tab key is pressed!(event)");
+			}
+			HP_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

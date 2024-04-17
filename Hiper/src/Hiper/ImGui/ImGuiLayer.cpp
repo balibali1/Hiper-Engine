@@ -64,7 +64,6 @@ namespace Hiper
 
 	void ImGuiLayer::OnUpdate()
 	{
-		HP_CORE_INFO("ImGuiLayer OnUpdate");
 
 		ImGuiIO& io = ImGui::GetIO();
 

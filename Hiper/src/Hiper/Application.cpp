@@ -7,6 +7,8 @@
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 
+#include "Input.h"
+
 namespace Hiper
 {
 
@@ -42,6 +44,9 @@ namespace Hiper
 				layer->OnUpdate();
 			}
 
+			//auto [x, y] = Input::GetMousePosition();
+			//HP_CORE_TRACE("{0}, {1}", x, y);
+
 			m_Window->OnUpdate();
 		}
 	}
@@ -52,7 +57,7 @@ namespace Hiper
 
 		dispatcher.Dispatch<WindowCloseEvent>(HP_BIND_EVENT_FN(Application::OnWindowClose));
 
-		HP_CORE_INFO("{0}", e);
+		//HP_CORE_INFO("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
