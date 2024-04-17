@@ -10,6 +10,10 @@
 	#error Hiper only support Windows!
 #endif // HP_PLATFORM_WINDOWS
 
+#ifdef HP_DEBUG
+	#define HP_ENABLE_ASSERTS
+#endif
+
 #ifdef HP_ENABLE_ASSERTS
 	#define HP_ASSERT(x, ...) { if(!(x)) { HP_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define HP_CORE_ASSERT(x, ...) { if(!(x)) { HP_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
