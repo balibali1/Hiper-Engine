@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "LayerStack.h"
 
+#include "Hiper/ImGui/ImGuiLayer.h"
 
 namespace Hiper
 {
@@ -30,6 +31,7 @@ namespace Hiper
 		bool OnWindowClose(WindowCloseEvent& event);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 
 		LayerStack m_LayerStack;

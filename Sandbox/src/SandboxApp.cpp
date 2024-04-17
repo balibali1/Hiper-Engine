@@ -1,4 +1,5 @@
 #include <Hiper.h>
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Hiper::Layer
 {
@@ -15,6 +16,16 @@ public:
 		{
 			HP_TRACE("Tab key is pressed!(poll)");
 		}
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		// TODO:
+		// 下面三句会引发编译错误，初步估计是由于sandbox用的是Hiper生成的dll，这依靠的HIPER_API的宏定义，将dll export和import
+		// 而ImGui并没有使用类似HIPER_API的语句，将dll给sandbox用
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Hiper::Event& event) override
@@ -37,7 +48,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Hiper::ImGuiLayer());
 	}
 
 	~Sandbox(){}
