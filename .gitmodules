@@ -1,3 +1,6 @@
 [submodule "Hiper/vendor/imgui"]
 	path = Hiper/vendor/imgui
 	url = git@github.com:balibali1/imgui.git
+[submodule "Hiper/vendor/glm"]
+	path = Hiper/vendor/glm
+	url = git@github.com:g-truc/glm.git
