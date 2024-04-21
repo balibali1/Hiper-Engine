@@ -8,6 +8,8 @@
 #include "Hiper\Events\KeyEvent.h"
 #include "Hiper\Events\MouseEvent.h"
 
+#include "Platform\OpenGL\OpenGLContext.h"
+
 namespace Hiper
 {
 	class WindowsWindow : public Window
@@ -37,6 +39,7 @@ namespace Hiper
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

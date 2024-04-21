@@ -2,6 +2,8 @@
 
 #include "WindowsWindow.h"
 
+#include "Platform/OpenGL/OpenGLContext.h"
+
 namespace Hiper
 {
 	static bool s_GLFWInitialized = false;
@@ -29,7 +31,7 @@ namespace Hiper
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
@@ -65,10 +67,9 @@ namespace Hiper
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
 
-		int state = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		HP_CORE_ASSERT(state, "Fail to initialize Glad!");
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
