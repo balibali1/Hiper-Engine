@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef HP_PLATFORM_WINDOWS
-	#ifdef HP_BUILD_DLL
-		#define HIPER_API __declspec(dllexport)
+	#if HP_DYNAMIC_LINK
+		#ifdef HP_BUILD_DLL
+			#define HIPER_API __declspec(dllexport)
+		#else
+			#define HIPER_API __declspec(dllimport)
+		#endif // HP_BUILD_DLL
 	#else
-		#define HIPER_API __declspec(dllimport)
-	#endif // HP_BUILD_DLL
+		#define HIPER_API
+	#endif
 #else
 	#error Hiper only support Windows!
 #endif // HP_PLATFORM_WINDOWS

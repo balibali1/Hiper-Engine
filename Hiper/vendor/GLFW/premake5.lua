@@ -1,6 +1,7 @@
 project "GLFW"
     kind "StaticLib"
     language "C"
+    staticruntime "on"
  
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -9,7 +10,7 @@ project "GLFW"
 	{
         "include/GLFW/glfw3.h",
         "include/GLFW/glfw3native.h",
-        "src/glfw_config.h",       --£¿£¿should it to be delete?
+        "src/glfw_config.h",       --ï¿½ï¿½ï¿½ï¿½should it to be delete?
         "src/internal.h",       --
         "src/platform.h",       --
         "src/mappings.h",       --
@@ -32,9 +33,7 @@ project "GLFW"
     }
  
 	filter "system:windows"
-        buildoptions { "-std=c11", "-lgdi32" }
         systemversion "latest"
-        staticruntime "On"
  
         files
         {
@@ -44,7 +43,7 @@ project "GLFW"
             "src/win32_monitor.c",
             "src/win32_time.h",     --
             "src/win32_time.c",
-            "src/win32_thread.h",   --½â¾öVulkan.objÏà¹ØÎÊÌâ
+            "src/win32_thread.h",   --ï¿½ï¿½ï¿½Vulkan.objï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             "src/win32_thread.c",
             "src/win32_window.c",
             "src/wgl_context.c",
@@ -57,5 +56,11 @@ project "GLFW"
             "_GLFW_WIN32",
             "_CRT_SECURE_NO_WARNINGS"
 		}
-    filter { "system:windows", "configurations:Release" }
-        buildoptions "/MT"
+
+    filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
